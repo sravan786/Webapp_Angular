@@ -1,0 +1,99 @@
+.mainBody {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.heading {
+  color: #e91e63;
+  margin-top: 20px;
+  font-size: 30px;
+  font-weight: 500;
+  font-family: Georgia;
+}
+.headingContent {
+  font-family: Georgia;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: justify;
+}
+
+.subHeading {
+  color: #008982;
+  font-size: 20px;
+  font-family: Georgia;
+  font-weight: 700;
+}
+
+.subMenuHeading {
+  color: #008982;
+  font-family: Georgia;
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 700;
+}
+
+.mainContentBody {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 10px 10px 10px;
+}
+
+.contentBody {
+  display: flex;
+  flex-direction: row;
+}
+.survivalContent {
+  flex-basis: 50%;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+.survivalContentText {
+  font-family: Georgia;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: justify;
+}
+.survivalImg {
+  flex-basis: 50%;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  height: 250px;
+}
+.thirdImg {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  height: 250px;
+  margin-top: 10px;
+}
+.innerBoldText {
+  font-size: 18px;
+  font-weight: 500;
+  color: #e91e63;
+  font-style: italic;
+  font-family: Georgia;
+}
+.list {
+  font-family: Georgia;
+  font-size: 18px;
+  line-height: 30px;
+  margin-top: 10px;
+  text-align: justify;
+}
+.list li {
+  text-align: justify;
+  font-family: Georgia;
+}
+.copyRight {
+  background-color: #e91e63;
+  padding-top: 5px;
+  text-align: center;
+  color: #ffffff;
+  font-family: Georgia;
+  font-size: 16;
+  align-items: center;
+}

@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="mainBody">
+    <h1 class="heading">Data Wrangling</h1>
+  </div>
+  <div class="mainContentBody">
+    <div class="headingContent">
+      Welcome to the Data Wrangling Process. Within this pivotal step, our
+      primary focus is on the meticulous preparation of the data to be
+      seamlessly integrated into the Survival Model. The process entails a
+      multifaceted approach, including the exclusion of patients who initiated
+      drug therapy before the study's inception. Concurrently, we will introduce
+      a novel feature known as MOT (Month on Therapy), expertly derived from the
+      patient's inaugural and concluding shipments. Furthermore, we shall
+      construct the observed feature, a critical determinant based on the
+      patient's receipt of shipments by the conclusion of the study period. This
+      data refinement stage is essential in furnishing the model with precise
+      and tailored inputs for our in-depth survival analysis.
+    </div>
+    <br /><br />
+    <div class="steps">
+      Step 3: Data Wrangling - Preparing Data For Survival Model
+    </div>
+
+    <button class="dataButton" role="button" (click)="getRawDataCollection()">
+      Data Wrangling Process
+    </button>
+    <br />
+    <div class="spinnerDiv" *ngIf="loading">
+      <div class="uploader-status">
+        <mat-spinner color="warn" class="spinner"></mat-spinner>
+      </div>
+      <span class="spinnerText">Wrangling Data for Survival Analysis...</span>
+    </div>
+    <br />
+
+    <div *ngIf="dataSource2?.top_five?.length > 0">
+      <span class="gridtop5label">Top 5 Records Of The Dataset</span>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource2?.top_five" matSort>
+          <ng-container matColumnDef="accountId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Account ID
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.AccountID }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="patientId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Patient ID
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.PatientID }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="product">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
+            <td mat-cell *matCellDef="let row">{{ row.Product }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="diseaseType">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              DiseaseType
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.DiseaseType }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="segment">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Segment</th>
+            <td mat-cell *matCellDef="let row">{{ row.Segment }}</td>
+          </ng-container>
+          <ng-container matColumnDef="mot">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>MOT</th>
+            <td mat-cell *matCellDef="let row">{{ row.MOT }}</td>
+          </ng-container>
+          <ng-container matColumnDef="minship">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>MinShip</th>
+            <td mat-cell *matCellDef="let row">{{ row.MinShip }}</td>
+          </ng-container>
+          <ng-container matColumnDef="maxship">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>MaxShip</th>
+            <td mat-cell *matCellDef="let row">{{ row.MaxShip }}</td>
+          </ng-container>
+          <ng-container matColumnDef="observed">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Observed</th>
+            <td mat-cell *matCellDef="let row">{{ row.Observed }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+        </table>
+      </div>
+      <div class="boxContent">
+        <div class="dataBox">
+          <span class="dataBoxHeading">Start Date</span>
+          <span class="dataBoxText">{{ dataSource2?.start_36 }}</span>
+        </div>
+        <div class="dataBox">
+          <span class="dataBoxHeading">End Date</span>
+          <span class="dataBoxText">{{ dataSource2?.end_36 }}</span>
+        </div>
+        <div class="dataBox">
+          <span class="dataBoxHeading"># of HCPs</span>
+          <span class="dataBoxText">{{ dataSource2?.number_accounts }}</span>
+        </div>
+        <div class="dataBox">
+          <span class="dataBoxHeading"># of Patients</span>
+          <span class="dataBoxText">{{ dataSource2?.number_patients }}</span>
+        </div>
+      </div>
+      <h2 class="subHeading">MOT Distribution Analysis</h2>
+      <br /><br />
+      <div
+        id="chartdiv"
+        style="width: 100%; height: 500px"
+      ></div>
+    </div>
+    <br /><br /><br />
+  </div>
+</div>

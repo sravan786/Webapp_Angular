@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="mainBody">
+    <h1 class="heading">Data Collection</h1>
+  </div>
+  <div class="mainContentBody">
+    <div class="headingContent">
+      Welcome to the Data Collection Process. In the initial step, we will
+      procure data from the Azure SQL database. The data collection process
+      serves as the bedrock upon which all subsequent data processing, analysis
+      and interpretation activities are constructed. It is a critical stage for
+      ensuring the reliability and veracity of data, thereby underpinning its
+      utility in research, analysis, decision-making and complex problem-solving
+      scenarios.
+    </div>
+    <br /><br />
+    <div class="steps">
+      Step 1: Accessing Data - Click on the Data Collection Button
+    </div>
+    <button class="dataButton" role="button" (click)="getRawDataCollection()">
+      Data Collection Process
+    </button>
+    <br />
+    <br />
+    <div class="spinnerDiv" *ngIf="loading">
+      <div class="uploader-status">
+        <mat-spinner color="warn" class="spinner"></mat-spinner>
+      </div>
+      <span class="spinnerText">Data Extraction in Progress...</span>
+    </div>
+    <br />
+    <div *ngIf="dataSource2?.top_five?.length > 0">
+      <span class="gridtop5label">Top 5 Records Of The Dataset</span>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource2?.top_five" matSort>
+          <!-- ID Column -->
+          <ng-container matColumnDef="accountId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Account ID
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.AccountID }}</td>
+          </ng-container>
+
+          <!-- Progress Column -->
+          <ng-container matColumnDef="patientId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Patient ID
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.PatientID }}</td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="shipDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>ShipDate</th>
+            <td mat-cell *matCellDef="let row">{{ row.ShipDate }}</td>
+          </ng-container>
+
+          <!-- Fruit Column -->
+          <ng-container matColumnDef="product">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
+            <td mat-cell *matCellDef="let row">{{ row.Product }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="diseaseType">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              DiseaseType
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.DiseaseType }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="segment">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Segment</th>
+            <td mat-cell *matCellDef="let row">{{ row.Segment }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+        </table>
+      </div>
+      <div class="headingContent">
+        In the raw data, there are
+        <span class="innerBoldText">
+          {{ dataSource2?.num_accountid }} unique Healthcare Providers (HCPs)
+        </span>
+        and
+        <span class="innerBoldText">
+          {{ dataSource2?.num_patientid }} unique patients </span
+        >. The data analysis can commence from
+        <span class="innerBoldText"> {{ dataSource2?.mindate_raw }} </span>,
+        onward. Furthermore, the analysis can be conducted for both Pulmonary
+        Arterial Hypertension (PAH) and Interstitial Lung Disease (ILD) across
+        multiple product groups, including Remodulin, Orenitram, and Tyvaso as
+        well as at various segment levels. However, it is important to note that
+        for Tyvaso patients the segmentation is aligned exclusively with the
+        CPS1 classification. Lastly, patients who have previously been
+        prescribed multiple brands of UT medications have been intentionally
+        omitted from the dataset.
+      </div>
+    </div>
+  </div>
+  <br /><br /><br />
+</div>

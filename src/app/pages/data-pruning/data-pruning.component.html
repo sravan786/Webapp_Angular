@@ -1,0 +1,197 @@
+<div class="container">
+  <div class="mainBody">
+    <h1 class="heading">Data Pruning</h1>
+  </div>
+  <div class="mainContentBody">
+    <div class="headingContent">
+      Welcome to the Data Pruning Process. It is an essential data preprocessing
+      step that involves the systematic removal of redundant, irrelevant or
+      noisy data elements from a dataset. This process is conducted to enhance
+      the dataset's quality, simplify its complexity and make it more suitable
+      for rigorous analysis. By eliminating superfluous information, resolving
+      outliers and optimizing feature selection, data pruning ultimately refines
+      and streamlines the dataset improving its utility for advanced analytical
+      and modeling purposes.
+    </div>
+    <br /><br />
+    <div class="steps">Step 2: Data Pruning - Filter Raw Data</div>
+
+    <div style="margin-top: 10px">
+      <mat-form-field>
+        <mat-label>Select Shipment Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          [min]="minDate"
+          [max]="maxDate"
+          [(ngModel)]="selectedDate"
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Select Disease Type</mat-label>
+        <mat-select (selectionChange)="addDisease($event)">
+          <mat-option *ngFor="let disease of diseaseOptions" [value]="disease">
+            {{ disease }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-chip-listbox style="margin-bottom: 10px">
+        <mat-chip
+          *ngFor="let disease of selectedDiseases"
+          [removable]="true"
+          (removed)="removeDisease(disease)"
+        >
+          {{ disease }}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip>
+      </mat-chip-listbox>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Select Product Group</mat-label>
+        <mat-select (selectionChange)="addProduct($event)">
+          <mat-option *ngFor="let product of productOptions" [value]="product">
+            {{ product }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-chip-listbox style="margin-bottom: 10px">
+        <mat-chip
+          *ngFor="let product of selectedProduct"
+          [removable]="true"
+          (removed)="removeProduct(product)"
+        >
+          {{ product }}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip>
+      </mat-chip-listbox>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Select Segment</mat-label>
+        <mat-select (selectionChange)="addSegment($event)">
+          <mat-option *ngFor="let segment of segmentOptions" [value]="segment">
+            {{ segment }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-chip-listbox style="margin-bottom: 10px">
+        <mat-chip
+          *ngFor="let segment of selectedSegment"
+          [removable]="true"
+          (removed)="removeSegment(segment)"
+        >
+          {{ segment }}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip>
+      </mat-chip-listbox>
+    </div>
+    <button class="dataButton" role="button" (click)="postFilterData()">
+      Apply Filter
+    </button>
+    <br />
+
+    <div class="spinnerDiv" *ngIf="loading">
+      <div class="uploader-status">
+        <mat-spinner color="warn" class="spinner"></mat-spinner>
+      </div>
+      <span class="spinnerText">Data Filter in Progress...</span>
+    </div>
+    <br />
+
+    <div *ngIf="dataSource2?.top_five?.length > 0">
+      <span class="gridtop5label">Top 5 Records Of The Dataset</span>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource2?.top_five" matSort>
+          <!-- ID Column -->
+          <ng-container matColumnDef="accountId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Account ID
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.AccountID }}</td>
+          </ng-container>
+
+          <!-- Progress Column -->
+          <ng-container matColumnDef="patientId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Patient ID
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.PatientID }}</td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="shipDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>ShipDate</th>
+            <td mat-cell *matCellDef="let row">{{ row.ShipDate }}</td>
+          </ng-container>
+
+          <!-- Fruit Column -->
+          <ng-container matColumnDef="product">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
+            <td mat-cell *matCellDef="let row">{{ row.Product }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="diseaseType">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              DiseaseType
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.DiseaseType }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="segment">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Segment</th>
+            <td mat-cell *matCellDef="let row">{{ row.Segment }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+        </table>
+      </div>
+      <br />
+
+      <div class="headingContent">
+        We have meticulously pruned the dataset, judiciously applying pertinent
+        filters and we are prepared for the subsequent phase. Within our
+        meticulously filtered raw dataset, our preparations for survival
+        analysis will commence from
+        <span class="innerBoldText"> {{ dataSource2?.filtered_date }}</span>
+        onward and it will have look back period of six months starting from
+        <span class="innerBoldText">{{ dataSource2?.filtered_date_prune }}</span
+        >. Notably, we have a cohort of
+        <span class="innerBoldText"
+          >{{ dataSource2?.filtered_num_accounts }} distinguished Healthcare
+          Providers (HCPs)
+        </span>
+        and a substantial
+        <span class="innerBoldText"
+          >{{ dataSource2?.filtered_num_patients }} distinct patients
+        </span>
+        at our disposal. Our data analysis shall pivot around
+        <span class="innerBoldText">{{ dataSource2?.filtered_product }}</span>
+        , encompassing a comprehensive examination of
+        <span class="innerBoldText">{{ dataSource2?.filtered_disease }}</span>
+        disease type. Additionally, our scrutiny shall extend to the dynamic
+        landscape of
+        <span class="innerBoldText">{{ dataSource2?.filtered_segment }}</span>
+        segment HCPs.
+      </div>
+    </div>
+    <br /><br /><br />
+  </div>
+</div>

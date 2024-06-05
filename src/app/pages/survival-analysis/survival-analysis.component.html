@@ -1,0 +1,108 @@
+<div class="container">
+    <div class="mainBody">
+        <h1 class="heading">Survival Analysis</h1>
+    </div>
+    <div class="mainContentBody">
+    <h1 class="subHeading">Survival Analysis?</h1>
+            <div class="headingContent">Survival time analysis is a group of statistical methods in which the variable under study is the time until an event occurs.
+            What does <span class = "innerBoldText"> time to occurrence of an event</span> mean? </div>
+    <br/><br/>
+    <div class="contentBody">
+        <div class="survivalContent">
+            <div class="survivalContentText">Survival time analysis considers a variable that has a start time and, when a particular event occurs, an end time.
+            The time between the start time and the event is the focus of survival analysis. For example,
+            time may be measured in days, weeks or months.
+            </div>
+        </div>
+        <div class="survivalImg"><img  src="../../../assets/Image2.jpeg" /></div>
+    </div>
+    </div>
+    <div class="mainContentBody">
+        <h1 class="subHeading">Use Case for Survival Time Analysis</h1>
+                <div class="headingContent" >An example would be to look at the time between a drug withdrawal and the person's relapse.
+                    The start time would then be the end of the withdrawal and the event considered would be the relapse.
+                    For example, you might be interested in whether different types of treatment have an effect on the time to relapse.
+        <br/><br/>
+            <div class="thirdImg"><img  src="../../../assets/Image3.jpeg" /></div>
+    </div>
+    <div class="mainContentBody">
+        <h1 class="subHeading">Censored Data</h1>
+                <div class="headingContent" >First of all, it is important to remember that a study cannot go on indefinitely, but is limited in time.
+                    For reasons of resources (time, money, etc.) and simply because you want to publish the results at some point, each study has a clear start and end date.
+                </div>
+        <br/><br/>
+        <div class="contentBody">
+            <div class="survivalImg"><img  src="../../../assets/Image6.jpeg" /></div>
+            <div class="survivalContent">
+                <div class="survivalContentText">Let's say you are a dental technician and you want to analyse the "survival time" of a filling in a tooth.
+                    If a filling is inserted within this time period and then the filling breaks out again within this time period and
+                    this is also documented, then there is a valid case. The event has occurred. However, it is also possible that a filling
+                    is inserted and then the end of the study is reached before the event occurs. Or it can happen that a subject decides not to continue with the study.
+                    In both cases, you do not know when or if the event under consideration has occurred. Further another event can occurs, that is not considered in the study.
+                    For example, the patient could die or even lose the whole tooth. In both cases, the event considered, that the filling breaks out, can no longer occur.
+                    It can also happen that the patient does not notice that the filling has broken out and it is only discovered at the next routine check-up.
+                    All in all, there are many cases where data is not fully available. This data is called <span class = "innerBoldText">censored data</span>.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mainContentBody">
+        <h1 class="subHeading">Kaplan Meier Curve</h1>
+        <div class="headingContent">The Kaplan-Meier curve is commonly used to analyze time-to-event data, such as the time until death or the time until a specific event occurs.
+            For this, the Kaplan Meier curve graphically represent the survival rate or survival function. Time is plotted on the x-axis and the survival rate is plotted on the y-axis.<br>
+            <span class = "innerBoldText">What is Survival Rate?</span> At this point, we go back to the tooth filling example. Suppose we have collected data on how long it takes for a filling to erupt.
+            In the Kaplan Meier curve, you can now read how likely it is that a filling will last longer than a certain time.
+        </div>
+        <br/><br/>
+        <div class="contentBody">
+            <div class="survivalContent">
+                <div class="survivalContentText">In this context, you might be interested, for example, in the probability that your filling will last longer than 5 years.
+                    To do this, simply move to 5 years on the x-axis of the graph and see what the survival rate (y-axis) is.
+                    At 5 years, the Kaplan Meier curve gives you a value of 0.7. So it is <span class = "innerBoldText">70%</span> likely that a filling will last longer than 5 years.
+                </div>
+            </div>
+            <div class="survivalImg"><img  src="../../../assets/Image5.jpeg" /></div>
+        </div>
+    </div>
+    <div class="mainContentBody">
+        <h1 class="subHeading">Retention vs Survival Analysis Methodology</h1>
+        <div class="headingContent"><span class = "innerBoldText">Retention Analysis Dashboard</span> measures how many patients return to your product over some specified time for a <span class = "innerBoldText">HCP</span>.
+            In contrast,<span class = "innerBoldText"> Survival Analysis</span> comprises a <span class = "innerBoldText">set of statistical methodologies</span>
+            wherein the focal variable of investigation is the duration leading up to the incidence of an event that is whether a patient successfully
+            received a shipment by the conclusion of the study period or not.
+        </div>
+        <br/><br/>
+        <div>
+            <span class = "subMenuHeading">Retention Analysis Methodology:</span>
+            <div class="headingContent"> <br>We will elucidate the methodology for Orenitram by employing a six-month retention dashboard as a case study for illustration.
+                <ul class="list">
+                    <li>Retrieve the shipment data for patients who have received shipments during the period from March 2022 to Feb 2023.
+                        It is imperative to verify that these patients do not possess any historical records of prior shipments.</li>
+                    <li>Perform an analysis on the entire patient population within the observational dataset to determine whether, after a six-month period, they have received the scheduled shipment.
+                        For instance, if a patient received the first shipment in April 2022, subsequently verify whether the same patient also received a shipment in October 2022.
+                        A successful receipt of the shipment during this timeframe indicates patient retention.</li>
+                    <li>Aggregate the data at <span class = "innerBoldText">HCP</span> level to determine the number of patients retained relative to the total number of patients
+                        and calculate the percentage of patients retained. For example, Dr. Eric Roberts achieved a six-month retention performance rate of 77%.</li>
+                </ul>
+                </div>
+        </div>
+
+        <div>
+            <span class = "subMenuHeading">Survival Analysis Methodology:</span>
+            <div class="headingContent"><br>We will elucidate the methodology by employing a <span class = "innerBoldText">Kaplan-Meier Model</span> for Tyvaso.
+            <ul class="list">
+                <li>Retrieve the shipment data for patients who have received shipments during the period from Oct 2020 to Sep 2023.
+                    It is essential to conduct a thorough verification to confirm that no patient records exist for shipments made between April 2020 and September 2020.
+                    Furthermore, we should promptly remove all patients who have undergone a transition from Tyvaso to another UT drug from our records.</li>
+                <li>Determine the duration of <span class = "innerBoldText">a patient's month on therapy</span> by utilizing the date of their initial shipment and the date of their final shipment.</li>
+                <li>Find the status of the final shipment for a patient has been received during the month of September 2023 or not.</li>
+                <li>Apply <span class = "innerBoldText">Kaplan-Meier Model</span> on the datset and visualize a survival curve as part of the analytical process.</li>
+            </ul>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="copyRight">
+        <p>&copy;  {{ currentYear }} United Therapeutics Corp - GDO. All rights reserved.</p>
+    </div> -->
+    <br/><br/><br/>
+</div>

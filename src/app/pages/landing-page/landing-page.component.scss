@@ -1,0 +1,78 @@
+.mainBody {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+img {
+  width: auto;
+  height: 70%;
+}
+
+h1 {
+  margin-top: 20px;
+  font-family: Georgia;
+  font-size: 45px;
+  color: #e91e63;
+  text-align: center;
+}
+
+.button-6 {
+  align-items: center;
+  background-color: #313a46;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.button-6:hover,
+.button-6:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: #ffffff;
+}
+
+.button-6:hover {
+  transform: translateY(-1px);
+  background-color: #e91e63;
+}
+
+.button-6:active {
+  background-color: #f0f0f1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+
+.copyRight {
+  background-color: #e91e63;
+  padding-top: 5px;
+  text-align: center;
+  color: #ffffff;
+  font-family: Georgia;
+  font-size: 16px;
+  align-items: center;
+}
